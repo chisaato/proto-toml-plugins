@@ -1,0 +1,29 @@
+# A TOML plugin for argocd:
+# https://moonrepo.dev/docs/proto/plugins#toml-plugin
+name = "gdu"
+type = "cli"
+
+[resolve]
+git-url = "https://github.com/dundee/gdu"
+
+[platform.linux]
+download-file = "gdu_linux_{arch}.tgz"
+checksum-file = "sha256sums.txt"
+exe-path = "gdu_{os}_{arch}"
+
+[platform.macos]
+download-file = "gdu_darwin_{arch}.tgz"
+checksum-file = "sha256sums.txt"
+exe-path = "gdu_{os}_{arch}"
+
+[platform.windows]
+download-file = "gdu_windows_{arch}.tgz"
+checksum-file = "sha256sums.txt"
+exe-path = "gdu_{os}_{arch}.exe"
+
+[install]
+download-url = "https://github.com/dundee/gdu/releases/download/v{version}/{download_file}"
+
+[install.arch]
+aarch64 = "arm64"
+x86_64 = "amd64"

@@ -1,2 +1,8 @@
 [plugins]
-vcpkg = "source:vcpkg/vcpkg.toml"
+cilium = "file://cilium/cilium.toml"
+hubble = "file://cilium/hubble.toml"
+tofu = "file://opentofu/opentofu.toml"
+rclone = "file://rclone/rclone.toml"
+vcpkg = "file://vcpkg/vcpkg.toml"
+q = "file://q-dns/q.toml"
+gdu = "file://gdu/gdu.toml"
