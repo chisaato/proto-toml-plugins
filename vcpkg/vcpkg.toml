@@ -1,0 +1,26 @@
+# A TOML plugin for argocd:
+# https://moonrepo.dev/docs/proto/plugins#toml-plugin
+name = "vcpkg"
+type = "dependency-manager"
+
+[resolve]
+git-url = "https://github.com/microsoft/vcpkg-tool"
+# vcpkg 使用 calver 但是 proto 似乎无法自动地切换到 calver 解析,就自己写了
+version-pattern = "^((?<year>\\d+)-(?<month>\\d+)-(?<day>\\d+))$"
+
+[platform.linux]
+download-file = "vcpkg-{libc}"
+
+[platform.macos]
+download-file = "vcpkg-macos"
+
+[platform.windows]
+download-file = "vcpkg.exe"
+
+[install]
+download-url = "https://github.com/microsoft/vcpkg-tool/releases/download/{version}/{download_file}"
+unpack = false
+
+[install.libc]
+gnu = "glibc"
+musl = "muslc"
