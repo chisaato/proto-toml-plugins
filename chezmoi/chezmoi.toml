@@ -1,0 +1,27 @@
+# A TOML plugin for argocd:
+# https://moonrepo.dev/docs/proto/plugins#toml-plugin
+name = "chezmoi"
+type = "cli"
+
+[resolve]
+git-url = "https://github.com/twpayne/chezmoi"
+
+[platform.linux]
+download-file = "chezmoi_{version}_linux-{libc}_{arch}.tar.gz"
+
+[platform.macos]
+download-file = "chezmoi_{version}_darwin_{arch}.tar.gz"
+
+[platform.windows]
+download-file = "chezmoi_{version}_windows_{arch}.zip"
+
+[install]
+download-url = "https://github.com/twpayne/chezmoi/releases/download/v{version}/{download_file}"
+
+[install.arch]
+aarch64 = "arm64"
+x86_64 = "amd64"
+
+[install.libc]
+gnu = "glibc"
+# musl = "musl"
