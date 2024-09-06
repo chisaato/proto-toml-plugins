@@ -1,0 +1,37 @@
+# A TOML plugin for argocd:
+# https://moonrepo.dev/docs/proto/plugins#toml-plugin
+name = "age"
+type = "cli"
+
+[resolve]
+git-url = "https://github.com/FiloSottile/age"
+
+[platform.linux]
+download-file = "age-v{version}-linux-{arch}.tar.gz"
+
+# exe-path = "bins/protostar"
+[platform.macos]
+download-file = "age-v{version}-darwin-{arch}.tar.gz"
+
+# exe-path = "bins/protostar"
+[platform.windows]
+download-file = "age-v{version}-windows-{arch}.zip"
+
+# exe-path = "bins/protostar"
+[install]
+download-url = "https://github.com/FiloSottile/age/releases/download/v{version}/{download_file}"
+
+[install.arch]
+aarch64 = "arm64"
+x86_64 = "amd64"
+
+[install.libc]
+gnu = "glibc"
+
+# musl = "musl"
+[install.primary]
+exe-path = "age/age"
+
+[install.secondary.age-keygen]
+exe-path = "age/age-keygen"
+no-shim = true
