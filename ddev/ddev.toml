@@ -24,3 +24,9 @@ download-url = "https://github.com/ddev/ddev/releases/download/v{version}/{downl
 [install.arch]
 aarch64 = "arm64"
 x86_64 = "amd64"
+
+[install.primary]
+exe-path = "ddev"
+
+[install.secondary.mkcert]
+exe-path = "mkcert"
