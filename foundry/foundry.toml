@@ -1,0 +1,45 @@
+# A TOML plugin for argocd:
+# https://moonrepo.dev/docs/proto/plugins#toml-plugin
+name = "foundry"
+type = "cli"
+
+[resolve]
+versions = ["nightly"]
+
+[resolve.aliases]
+latest = "nightly"
+
+[platform.linux]
+download-file = "foundry_nightly_linux_{arch}.tar.gz"
+
+# exe-path = "bins/protostar"
+[platform.macos]
+download-file = "foundry_nightly_darwin_{arch}.tar.gz"
+
+# exe-path = "bins/protostar"
+[install]
+download-url = "https://github.com/foundry-rs/foundry/releases/download/v{version}/{download_file}"
+
+[install.arch]
+aarch64 = "arm64"
+x86_64 = "amd64"
+
+[install.libc]
+gnu = "glibc"
+
+# musl = "musl"
+[install.primary]
+exe-path = "forge"
+no-shim = true
+
+[install.secondary.cast]
+exe-path = "cast"
+no-shim = true
+
+[install.secondary.anvil]
+exe-path = "anvil"
+no-shim = true
+
+[install.secondary.chisel]
+exe-path = "chisel"
+no-shim = true
