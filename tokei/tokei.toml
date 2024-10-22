@@ -1,0 +1,22 @@
+# A TOML plugin for argocd:
+# https://moonrepo.dev/docs/proto/plugins#toml-plugin
+name = "tokei"
+type = "cli"
+
+[resolve]
+git-url = "https://github.com/XAMPPRocky/tokei"
+
+[platform.linux]
+download-file = "tokei-{arch}-unknown-linux-{libc}.tar.gz"
+
+[platform.macos]
+download-file = "tokei-{arch}-apple-darwin.tar.gz"
+
+[platform.windows]
+download-file = "tokei-{arch}-pc-windows-msvc.exe"
+
+[install]
+download-url = "https://github.com/XAMPPRocky/tokei/releases/download/v{version}/{download_file}"
+# [install.arch]
+# aarch64 = "arm64"
+# x86_64 = "amd64"
