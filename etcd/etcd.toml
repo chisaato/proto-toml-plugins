@@ -1,0 +1,35 @@
+# A TOML plugin for argocd:
+# https://moonrepo.dev/docs/proto/plugins#toml-plugin
+name = "etcd"
+type = "cli"
+
+[resolve]
+git-url = "https://github.com/etcd-io/etcd"
+
+[platform.linux]
+archive-prefix = "etcd-v{version}-linux-{arch}"
+download-file = "etcd-v{version}-linux-{arch}.tar.gz"
+
+[platform.macos]
+archive-prefix = "etcd-v{version}-darwin-{arch}"
+download-file = "etcd-v{version}-darwin-{arch}.tar.gz"
+
+[platform.windows]
+archive-prefix = "etcd-v{version}-windows-{arch}"
+download-file = "etcd-v{version}-windows-{arch}.tar.gz"
+
+[install]
+download-url = "https://github.com/etcd-io/etcd/releases/download/v{version}/{download_file}"
+
+[install.arch]
+aarch64 = "arm64"
+x86_64 = "amd64"
+
+[install.primary]
+exe-path = "etcd"
+
+[install.secondary.etcdctl]
+exe-path = "etcdctl"
+
+[install.secondary.etcdutl]
+exe-path = "etcdutl"
