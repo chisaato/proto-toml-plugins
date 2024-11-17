@@ -1,0 +1,20 @@
+# A TOML plugin for argocd:
+# https://moonrepo.dev/docs/proto/plugins#toml-plugin
+name = "longhornctl"
+type = "cli"
+
+[resolve]
+git-url = "https://github.com/longhorn/cli"
+
+[platform.linux]
+download-file = "longhornctl-linux-{arch}"
+
+[install]
+download-url = "https://github.com/longhorn/cli/releases/download/v{version}/{download_file}"
+
+[install.arch]
+aarch64 = "arm64"
+x86_64 = "amd64"
+
+[install.libc]
+gnu = "glibc"
