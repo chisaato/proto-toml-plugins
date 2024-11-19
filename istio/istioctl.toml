@@ -1,0 +1,26 @@
+# A TOML plugin for argocd:
+# https://moonrepo.dev/docs/proto/plugins#toml-plugin
+name = "istioctl"
+type = "cli"
+
+[resolve]
+git-url = "https://github.com/istio/istio"
+
+[platform.linux]
+download-file = "istioctl-{version}-linux-{arch}.tar.gz"
+
+[platform.macos]
+download-file = "istioctl-{version}-osx-{arch}.tar.gz"
+
+[platform.windows]
+download-file = "istioctl-{version}-win-{arch}.zip"
+
+[install]
+download-url = "https://github.com/istio/istio/releases/download/{version}/{download_file}"
+
+[install.arch]
+aarch64 = "arm64"
+x86_64 = "amd64"
+
+[install.libc]
+gnu = "glibc"
