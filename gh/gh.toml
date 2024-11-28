@@ -1,0 +1,36 @@
+# A TOML plugin for GitHub CLI:
+# https://moonrepo.dev/docs/proto/plugins#toml-plugin
+name = "GitHub CLI"
+type = "cli"
+
+[resolve]
+git-url = "https://github.com/cli/cli"
+
+[platform.linux]
+bin-path = "bin/gh"
+download-file = "gh_{version}_linux_{arch}.tar.gz"
+checksum-file = "gh_{version}_checksums.txt"
+archive-prefix = "gh_{version}_linux_{arch}"
+
+[platform.macos]
+bin-path = "bin/gh"
+download-file = "gh_{version}_macOS_{arch}.zip"
+checksum-file = "gh_{version}_checksums.txt"
+archive-prefix = "gh_{version}_macOS_{arch}"
+
+[platform.windows]
+bin-path = "bin/gh.exe"
+download-file = "gh_{version}_windows_{arch}.zip"
+checksum-file = "gh_{version}_checksums.txt"
+archive-prefix = "gh_{version}_windows_{arch}"
+
+[install]
+download-url = "https://github.com/cli/cli/releases/download/v{version}/{download_file}"
+
+[install.primary]
+exe-path = "bin/gh"
+
+[install.arch]
+aarch64 = "arm64"
+x86_64 = "amd64"
+x86 = "386"
