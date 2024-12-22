@@ -1,0 +1,30 @@
+# A TOML plugin for argocd:
+# https://moonrepo.dev/docs/proto/plugins#toml-plugin
+name = "Lima"
+type = "cli"
+
+[resolve]
+git-url = "https://github.com/lima-vm/lima"
+
+[platform.linux]
+download-file = "lima-{version}-Linux-{arch}.tar.gz"
+checksum-file = "SHA256SUMS"
+bin-path = "bin/limactl"
+
+[platform.macos]
+download-file = "lima-{version}-Darwin-{arch}.tar.gz"
+checksum-file = "SHA256SUMS"
+bin-path = "bin/limactl"
+
+[install]
+download-url = "https://github.com/lima-vm/lima/releases/download/v{version}/{download_file}"
+checksum-url = "https://github.com/lima-vm/lima/releases/download/v{version}/{checksum_file}"
+
+[install.primary]
+exe-path = "bin/limactl"
+
+[install.secondary.lima]
+exe-path = "bin/lima"
+
+[install.arch]
+aarch64 = "arm64"
