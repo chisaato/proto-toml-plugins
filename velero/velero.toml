@@ -1,0 +1,34 @@
+# A TOML plugin for argocd:
+# https://moonrepo.dev/docs/proto/plugins#toml-plugin
+name = "Velero"
+type = "cli"
+
+[resolve]
+git-url = "https://github.com/vmware-tanzu/velero"
+
+[platform.linux]
+download-file = "velero-v{version}-linux-{arch}.tar.gz"
+checksum-file = "CHECKSUM"
+archive-prefix = "velero-v{version}-linux-{arch}"
+
+# exe-path = "velero"
+[platform.macos]
+download-file = "velero-v{version}-darwin-{arch}.tar.gz"
+checksum-file = "CHECKSUM"
+archive-prefix = "velero-v{version}-darwin-{arch}"
+
+# exe-path = "velero"
+[platform.windows]
+download-file = "velero-v{version}-windows-{arch}.tar.gz"
+checksum-file = "CHECKSUM"
+archive-prefix = "velero-v{version}-windows-{arch}"
+
+# exe-path = "velero.exe"
+[install]
+download-url = "https://github.com/vmware-tanzu/velero/releases/download/v{version}/{download_file}"
+
+[install.arch]
+aarch64 = "arm64"
+x86_64 = "amd64"
+# [install.primary]
+# exe-path = "velero"
