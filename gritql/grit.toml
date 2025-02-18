@@ -1,0 +1,28 @@
+# A TOML plugin for argocd:
+# https://moonrepo.dev/docs/proto/plugins#toml-plugin
+name = "grit"
+type = "cli"
+
+[resolve]
+git-url = "https://github.com/getgrit/gritql"
+version-pattern = "v(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)-(?<pre>[a-z]+)\\.(?<build>\\d+)"
+
+# manifest-url = "https://github.com/getgrit/gritql/releases/latest/download/dist-manifest.json"
+# manifest-version-key = "announcement_tag"
+[resolve.aliases]
+latest = "0.1.0-alpha.1739864250"
+
+[platform.linux]
+download-file = "grit-{arch}-unknown-linux-{libc}.tar.gz"
+
+[platform.macos]
+download-file = "grit-{arch}-apple-darwin.tar.gz"
+
+[platform.windows]
+download-file = "grit-{arch}-pc-windows-msvc.tar.gz"
+
+[install]
+download-url = "https://github.com/getgrit/gritql/releases/download/v{version}/{download_file}"
+# [install.arch]
+# aarch64 = "arm64"
+# x86_64 = "amd64"
