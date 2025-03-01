@@ -1,0 +1,25 @@
+# A TOML plugin for proto:
+# https://moonrepo.dev/docs/proto/plugins#toml-plugin
+name = "chart-releaser"
+type = "cli"
+
+[platform.linux]
+download-file = "chart-releaser_{version}_linux_{arch}.tar.gz"
+
+[platform.macos]
+download-file = "chart-releaser_{version}_darwin_{arch}.tar.gz"
+
+[platform.windows]
+download-file = "chart-releaser_{version}_windows_{arch}.zip"
+
+[install]
+checksum-url = "https://github.com/helm/chart-releaser/releases/download/v{version}/checksums.txt"
+download-url = "https://github.com/helm/chart-releaser/releases/download/v{version}/{download_file}"
+unpack = true
+
+[install.arch]
+aarch64 = "arm64"
+x86_64 = "amd64"
+
+[resolve]
+git-url = "https://github.com/helm/chart-releaser"
