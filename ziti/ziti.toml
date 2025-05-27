@@ -1,0 +1,26 @@
+# A TOML plugin for argocd:
+# https://moonrepo.dev/docs/proto/plugins#toml-plugin
+name = "OpenZiti"
+type = "cli"
+
+[resolve]
+git-url = "https://github.com/openziti/ziti"
+
+[platform.linux]
+download-file = "ziti-linux-{arch}-{version}.tar.gz"
+checksum-file = "checksums.sha256.txt"
+
+[platform.macos]
+download-file = "ziti-darwin-{arch}-{version}.tar.gz"
+checksum-file = "checksums.sha256.txt"
+
+[platform.windows]
+download-file = "ziti-windows-{arch}-{version}.zip"
+checksum-file = "checksums.sha256.txt"
+
+[install]
+download-url = "https://github.com/openziti/ziti/releases/download/v{version}/{download_file}"
+
+[install.arch]
+aarch64 = "arm64"
+x86_64 = "amd64"
