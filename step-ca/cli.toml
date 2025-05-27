@@ -1,0 +1,32 @@
+# A TOML plugin for argocd:
+# https://moonrepo.dev/docs/proto/plugins#toml-plugin
+name = "Step"
+type = "cli"
+
+[resolve]
+git-url = "https://github.com/smallstep/cli"
+
+[platform.linux]
+download-file = "step_linux_{version}_{arch}.tar.gz"
+checksum-file = "checksums.txt"
+exe-path = "bin/step"
+archive-prefix = "step_{version}"
+
+[platform.macos]
+download-file = "step_darwin_{version}_{arch}.tar.gz"
+checksum-file = "checksums.txt"
+exe-path = "bin/step"
+archive-prefix = "step_{version}"
+
+[platform.windows]
+download-file = "step_windows_{version}_{arch}.zip"
+checksum-file = "checksums.txt"
+exe-path = "bin/step.exe"
+archive-prefix = "step_{version}"
+
+[install]
+download-url = "https://github.com/smallstep/cli/releases/download/v{version}/{download_file}"
+
+[install.arch]
+aarch64 = "arm64"
+x86_64 = "amd64"
