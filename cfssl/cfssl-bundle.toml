@@ -1,20 +1,20 @@
 # A TOML plugin for argocd:
 # https://moonrepo.dev/docs/proto/plugins#toml-plugin
-name = "cfssl"
+name = "cfssl-bundle"
 type = "cli"
 
 [resolve]
 git-url = "https://github.com/cloudflare/cfssl"
 
 [platform.linux]
-download-file = "cfssl_{version}_linux_{arch}"
+download-file = "cfssl-bundle_{version}_linux_{arch}"
 checksum-file = "cfssl_{version}_checksums.txt"
 
 [platform.macos]
-download-file = "cfssl_{version}_darwin_{arch}"
+download-file = "cfssl-bundle_{version}_darwin_{arch}"
 
 [platform.windows]
-download-file = "cfssl_{version}_windows_{arch}.exe"
+download-file = "cfssl-bundle_{version}_windows_{arch}.exe"
 
 [install]
 download-url = "https://github.com/cloudflare/cfssl/releases/download/v{version}/{download_file}"
